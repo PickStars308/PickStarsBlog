@@ -3,10 +3,10 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'V*'  # 监听以 V 开头的 tag
+      - 'V*'
 
 permissions:
-  contents: write  # 关键：允许写入 Release
+  contents: write
 
 jobs:
   build-and-release:
@@ -28,6 +28,9 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Zip dist folder
+        run: zip -r dist.zip dist
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -39,13 +42,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Release Assets
-        uses: actions/upload-release-asset@v1
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist
-          asset_name: dist.zip
-          asset_content_type: application/zip
-
-      - name: Zip dist folder
-        run: zip -r dist.zip dist
+          files: dist.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
