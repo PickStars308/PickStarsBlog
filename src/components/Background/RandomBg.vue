@@ -11,7 +11,7 @@
 const images = import.meta.glob('@/assets/assets/images/*.{jpg,jpeg,png,webp,gif}', {
   eager: true,
   import: 'default',
-})
+}) as Record<string, string> // 强制类型断言为字符串
 
 const imageUrls = Object.values(images)
 
@@ -24,6 +24,7 @@ const backgroundStyle = {
   backgroundImage: `url(${getRandomImage()})`,
 }
 </script>
+
 
 <style scoped lang="scss">
 .random-background {
