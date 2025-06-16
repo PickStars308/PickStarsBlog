@@ -1,0 +1,22 @@
+:root {
+  --bg-color: rgb(255, 255, 255);
+}
+
+.dark-theme {
+  --bg-color: #121212;
+}
+
+@import "https://chinese-fonts-cdn.deno.dev/packages/dymh/dist/DouyinSansBold/result.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Douyin Sans';
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+}

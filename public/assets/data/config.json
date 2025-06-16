@@ -1,0 +1,33 @@
+{
+  "Maintain": {
+    "Title": "网站维护中",
+    "Description": "我们的网站正在进行备案或升级维护，暂时无法访问。请稍后再试，感谢您的理解与支持。 ",
+    "ContactAdmini": "pickstars2024@qq.com"
+  },
+  "PickStars": {
+    "Release": {
+      "Use": true,
+      "Data": {
+        "Title": "摘星辰 Release",
+        "Version": "1.0.0",
+        "Description": "摘星辰 一款Material Design 3为风格设计的多功能工具聚合工具箱"
+      },
+      "Download": {
+        "Link": "http://backend.xinstudio.top/ResourceData/PickStars_3.0_sign.apk",
+        "Password": "zxc"
+      }
+    },
+    "Beta": {
+      "Use": false,
+      "Data": {
+        "Title": "摘星辰 Beta",
+        "Version": "1.0.0",
+        "Description": "摘星辰 一款Material Design 3为风格设计的多功能工具聚合工具箱"
+      },
+      "Download": {
+        "Link": "https://github.com/pickstars2024/PickStars/releases/download/v1.0.0/PickStars-1.0.0.zip",
+        "Password": ""
+      }
+    }
+  }
+}

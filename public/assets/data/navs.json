@@ -1,0 +1,18 @@
+[
+  {
+    "name": "首页",
+    "path": "/"
+  },
+  {
+    "name": "关于",
+    "path": "/About"
+  },
+  {
+    "name": "下载",
+    "path": "/PickStars"
+  },
+   {
+    "name": "网站状态",
+    "path": "https://stats.uptimerobot.com/KRCYholq9z"
+  }
+]

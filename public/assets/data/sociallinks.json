@@ -1,0 +1,20 @@
+[
+  {
+    "name": "icon-Github",
+    "url": "https://github.com/PickStars308/",
+    "bgColor": "#000000",
+    "iconColor": "#FFFFFF"
+  },
+  {
+    "name": "icon-QQ",
+    "url": "https://qm.qq.com/q/8Kg04tLXb2",
+    "bgColor": "#949FC3",
+    "iconColor": "#FFFFFF"
+  },
+  {
+    "name": "icon-Email",
+    "url": "mailto:pickstars2024@qq.com",
+    "bgColor": "#A7C9C7",
+    "iconColor": "#FFFFFF"
+  }
+]
