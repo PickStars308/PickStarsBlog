@@ -5,6 +5,9 @@ on:
     tags:
       - 'V*'  # 监听以 V 开头的 tag
 
+permissions:
+  contents: write  # 关键：允许写入 Release
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
