@@ -1,17 +1,26 @@
 <template>
   <header class="app-header">
     <div class="logo">
-      <h1> {{ SiteAuthor }} </h1>
-      <nav>
-        <RouterLink to="/">首页</RouterLink>
-        <RouterLink to="/About">关于</RouterLink>
-      </nav>
+      <h1>{{ SiteAuthor }}</h1>
+
+      <button
+          class="preview-btn"
+          @mouseenter="previewStore.setPreview(true)"
+          @mouseleave="previewStore.setPreview(false)"
+      >
+        <svg-icon icon-name="icon-Eyes" color="#ffffff"/>
+      </button>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import {usePreviewStore} from '@/stores/preview'
+import SvgIcon from "@/components/SvgIcon.vue";
+
 const SiteAuthor = import.meta.env.VITE_SITE_Briefly
+const previewStore = usePreviewStore()
+
 </script>
 
 <style scoped lang="scss">
@@ -22,6 +31,7 @@ const SiteAuthor = import.meta.env.VITE_SITE_Briefly
   width: 100%;
   display: flex;
   justify-content: center;
+  z-index: 1000;
 
   .logo {
     width: 85%;
@@ -35,18 +45,28 @@ const SiteAuthor = import.meta.env.VITE_SITE_Briefly
     align-items: center;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    z-index: 1000;
   }
 
-  nav a {
-    color: white;
-    margin-left: 1rem;
-    text-decoration: none;
+  .preview-btn {
+    background: transparent;
+    padding: 0rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    fill: white;
 
     &:hover {
-      text-decoration: underline;
     }
   }
 }
 
+@media (max-width: 768px) {
+  .app-header {
+    .logo {
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+}
 </style>

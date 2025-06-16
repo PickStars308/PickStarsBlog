@@ -1,8 +1,6 @@
 <template>
   <div class="HomePage">
     <HeroSection/>
-    <SkillsSection/>
-    <ProjectsSection/>
   </div>
 </template>
 

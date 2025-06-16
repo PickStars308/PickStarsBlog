@@ -1,5 +1,9 @@
 <template>
+  <loading-dialog/>
+
   <RandomBg/>
+
+  <VerticalNav/>
 
   <section class="AppLayout">
     <AppHeader/>
@@ -36,6 +40,7 @@ const icon = `
 
     `;
 import {useAppStore} from '@/stores/index.ts'
+import VerticalNav from "@/components/VerticalNav.vue";
 
 if (!isMaintaining) {
 
@@ -110,5 +115,5 @@ if (!isMaintaining) {
 
 
 <style lang="scss">
-@import "@/styles/global.scss";
+@use "@/styles/global.scss" as *;
 </style>

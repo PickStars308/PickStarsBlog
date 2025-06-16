@@ -11,12 +11,8 @@
           这里是 <span class="sitename wow animate__animated animate__fadeInLeft">{{ SiteAuthor }}</span> 的小窝
         </span>
         <span class="slogan wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s">
-          <Typewriter/>
+          在这里，你可以更好的了解我...
         </span>
-
-        <div class="social-links wow animate__animated animate__fadeInLeft" data-wow-delay="0.7s">
-          <SocialLinks/>
-        </div>
       </div>
 
       <!-- 右侧头像区 -->
@@ -25,12 +21,16 @@
       </div>
     </div>
 
+    <div class="scroll-down">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import SocialLinks from "@/components/Layout/SocialLinks.vue";
-import Typewriter from "@/components/Typewriter.vue";
 
 const AvatarUrl = `http://q.qlogo.cn/headimg_dl?dst_uin=${import.meta.env.VITE_SITE_AVATAR}&spec=${import.meta.env.VITE_AVATAR_SIZE}&img_type=jpg`
 const SiteAuthor = import.meta.env.VITE_SITE_AUTHOR
@@ -44,6 +44,31 @@ const SiteAuthor = import.meta.env.VITE_SITE_AUTHOR
   align-items: center;
   padding: 0 1rem;
 
+
+  .scroll-down {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: white;
+    font-size: 1rem;
+    animation: slide-down 1s infinite;
+  }
+
+  @keyframes slide-down {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -10px);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, 10px);
+    }
+  }
   .hero-container {
     display: grid;
     grid-template-columns: 13fr 2fr;
@@ -84,25 +109,6 @@ const SiteAuthor = import.meta.env.VITE_SITE_AUTHOR
       .slogan {
         font-size: 1.5rem;
         margin-bottom: 2rem;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 1rem;
-
-        a {
-          font-size: 1.5rem;
-          color: #333;
-          transition: color 0.3s;
-
-          &:hover {
-            color: var(--el-color-primary);
-          }
-        }
-
-        @media (max-width: 768px) {
-          justify-content: center;
-        }
       }
 
       @media (max-width: 768px) {

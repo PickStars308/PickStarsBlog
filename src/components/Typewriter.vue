@@ -12,7 +12,7 @@ const fullText = ref('');
 const displayText = ref('');
 const typingIndex = ref(0);
 const typingSpeed = 120; // 每个字间的速度（毫秒）
-const startDelay = 3000; // 延迟3秒开始打字动画
+const startDelay = 1500; // 延迟3秒开始打字动画
 
 // 打字逻辑
 const typeWriter = () => {

@@ -36,7 +36,7 @@ onMounted(async () => {
     ElNotification({
       title: "Error",
       message: '' + error,
-      type: "info",
+      type: "error",
     });
   }
 });
