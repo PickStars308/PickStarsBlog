@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import {ref, onMounted} from 'vue'
+import {useRoute} from 'vue-router'
 import axios from 'axios'
-import { marked } from 'marked'
+import {marked} from 'marked'
+import {ElNotification} from 'element-plus'
+
 
 interface PickStarsItem {
   id: string
@@ -40,13 +42,17 @@ onMounted(async () => {
       // 获取更新日志 markdown 内容
       if (found.Data.Log) {
         const logRes = await axios.get(found.Data.Log)
-        changelogHtml.value = marked.parse(logRes.data)
+        changelogHtml.value = await marked.parse(logRes.data)
       }
     } else {
       notFound.value = true
     }
-  } catch (err) {
-    console.error('加载配置或更新日志失败:', err)
+  } catch (error) {
+    ElNotification({
+      title: "Error",
+      message: '' + error,
+      type: "error",
+    });
     notFound.value = true
   }
 })
@@ -57,7 +63,7 @@ onMounted(async () => {
   <section class="store-download-page">
     <div v-if="appData" class="app-card">
       <div class="header">
-        <img :src="appData.Data.Icon || '/default-icon.png'" alt="App 图标" class="icon" />
+        <img :src="appData.Data.Icon || '/default-icon.png'" alt="App 图标" class="icon"/>
         <div class="info">
           <h1>{{ appData.Data.Title }}</h1>
           <p class="version">版本：{{ appData.Data.Version }}</p>
@@ -67,7 +73,7 @@ onMounted(async () => {
       </div>
 
       <div v-if="appData.Data.Screenshots?.length" class="screenshots">
-        <img v-for="(img, i) in appData.Data.Screenshots" :key="i" :src="img" alt="Screenshot" />
+        <img v-for="(img, i) in appData.Data.Screenshots" :key="i" :src="img" alt="Screenshot"/>
       </div>
 
       <div class="description">
@@ -250,6 +256,7 @@ onMounted(async () => {
         h1 {
           font-size: 1.3rem;
         }
+
         .version,
         .password {
           font-size: 0.85rem;

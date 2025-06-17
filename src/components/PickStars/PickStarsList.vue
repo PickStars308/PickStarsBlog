@@ -2,6 +2,7 @@
 import {ref, onMounted} from 'vue'
 import axios from 'axios'
 import {useRouter} from 'vue-router'
+import {ElNotification} from 'element-plus'
 
 interface PickStarsItem {
   id: string
@@ -26,8 +27,12 @@ onMounted(async () => {
     if (res.data?.PickStars) {
       pickStarsList.value = res.data.PickStars
     }
-  } catch (err) {
-    console.error('加载 PickStars 配置失败:', err)
+  } catch (error) {
+    ElNotification({
+      title: "Error",
+      message: '' + error,
+      type: "error",
+    });
   }
 })
 
@@ -120,7 +125,7 @@ const goToDownload = (item: PickStarsItem) => {
       border-radius: 0.6rem;
       font-weight: 500;
       font-size: 0.95rem;
-      cursor: pointer;
+
       border: none;
       transition: background-color 0.3s ease;
 

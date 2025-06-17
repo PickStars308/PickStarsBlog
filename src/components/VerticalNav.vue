@@ -52,6 +52,7 @@ onMounted(async () => {
       type: "error",
     });  }
 })
+
 </script>
 
 <style scoped lang="scss">

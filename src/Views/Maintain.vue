@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import {ElNotification} from 'element-plus'
 
 interface MaintainInfo {
   Title: string
@@ -17,8 +18,12 @@ onMounted(async () => {
     const res = await axios.get('/assets/data/config.json')
     maintainData.value = res.data.Maintain || null
   } catch (err) {
-    console.error('加载维护信息失败:', err)
     error.value = true
+    ElNotification({
+      title: "Error",
+      message: '' + err,
+      type: "error",
+    });
   } finally {
     loading.value = false
   }

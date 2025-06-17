@@ -3,24 +3,36 @@
     <div class="logo">
       <h1>{{ SiteAuthor }}</h1>
 
-      <button
-          class="preview-btn"
-          @mouseenter="previewStore.setPreview(true)"
-          @mouseleave="previewStore.setPreview(false)"
-      >
-        <svg-icon icon-name="icon-Eyes" color="#ffffff"/>
-      </button>
+      <div class="Button">
+        <SvgIcon
+            icon-name="icon-Eyes"
+            color="#ffffff"
+            @mouseenter="previewStore.setPreview(true)"
+            @mouseleave="previewStore.setPreview(false)"
+        />
+        <SvgIcon
+            icon-name="icon-Setting"
+            color="#ffffff"
+            @click="openSettingsModal"
+        />
+      </div>
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import {usePreviewStore} from '@/stores/preview'
+import { usePreviewStore } from '@/stores/preview'
 import SvgIcon from "@/components/SvgIcon.vue";
+import { useSettingsStore } from '@/stores/settings';  // 引入设置状态管理
 
 const SiteAuthor = import.meta.env.VITE_SITE_Briefly
 const previewStore = usePreviewStore()
+const settingsStore = useSettingsStore();  // 初始化设置存储
 
+// 打开设置弹窗的方法
+const openSettingsModal = () => {
+  settingsStore.toggleSettingsModal(true);
+};
 </script>
 
 <style scoped lang="scss">
@@ -47,17 +59,11 @@ const previewStore = usePreviewStore()
     border-bottom-right-radius: 1rem;
   }
 
-  .preview-btn {
-    background: transparent;
-    padding: 0rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    fill: white;
+  .Button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 
-    &:hover {
-    }
   }
 }
 
@@ -69,4 +75,6 @@ const previewStore = usePreviewStore()
     }
   }
 }
+
+
 </style>

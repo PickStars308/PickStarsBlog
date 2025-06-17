@@ -8,16 +8,19 @@
 </template>
 
 <script setup lang="ts">
+
 import { computed, ref, onMounted } from 'vue'
 import { usePreviewStore } from '@/stores/preview'
-import { useAppStore } from '@/stores/index.ts'
-import {ElNotification} from "element-plus";
+import { useAppStore } from '@/stores/index'
+import { useSettingsStore } from '@/stores/settings'
+import { ElNotification } from 'element-plus'
 
-// 获取 Pinia store
+// 获取 stores
 const previewStore = usePreviewStore()
 const appStore = useAppStore()
+const settingsStore = useSettingsStore()
 
-// 导入所有图片资源
+// 本地图片资源
 const images = import.meta.glob('@/assets/assets/images/*.{jpg,jpeg,png,webp,gif}', {
   eager: true,
   import: 'default',
@@ -25,40 +28,73 @@ const images = import.meta.glob('@/assets/assets/images/*.{jpg,jpeg,png,webp,gif
 
 const imageUrls = Object.values(images)
 
-// 随机选取一张背景图
-const randomImage = ref('')
-
+const backgroundUrl = ref('')
 const backgroundStyle = computed(() => ({
-  backgroundImage: `url(${randomImage.value})`,
+  backgroundImage: `url(${backgroundUrl.value})`,
 }))
-
 const isPreview = computed(() => previewStore.isPreviewing)
 
-onMounted(() => {
-  // 随机挑选图片
+// 壁纸加载方法
+const loadWallpaper = async () => {
+  appStore.setLoading(true)
+
+  // 1. 每日一图
+  if (settingsStore.wallpaperType === 'daily') {
+    const bingUrl = 'https://bing.ee123.net/img/4k'
+    backgroundUrl.value = bingUrl
+
+    const img = new Image()
+    img.src = bingUrl
+    img.onload = () => {
+      setTimeout(() => {
+        appStore.setLoading(false)
+      }, 800)
+    }
+    img.onerror = () => {
+      ElNotification({
+        title: '加载失败',
+        message: '无法加载 Bing 壁纸，已为您切换至随机壁纸',
+        type: 'error',
+      })
+      loadRandomImage()
+    }
+  }
+  // 2. 随机本地图
+  else {
+    loadRandomImage()
+  }
+}
+
+const loadRandomImage = () => {
   const index = Math.floor(Math.random() * imageUrls.length)
   const imgUrl = imageUrls[index]
-  randomImage.value = imgUrl
+  backgroundUrl.value = imgUrl
 
-  // 使用 Image 对象检测是否加载完成
   const img = new Image()
   img.src = imgUrl
   img.onload = () => {
-    // 图片加载完成后延迟隐藏 loading
     setTimeout(() => {
       appStore.setLoading(false)
-    }, 1000)
+    }, 800)
   }
-
   img.onerror = () => {
     ElNotification({
-      title: "Error",
-      message: '背景加载失败...',
-      type: "error",
-    });    // 即使失败也结束 loading（可选）
+      title: '加载失败',
+      message: '本地图片加载失败',
+      type: 'error',
+    })
     appStore.setLoading(false)
   }
+}
+
+onMounted(() => {
+  loadWallpaper()
 })
+
+watch(() => settingsStore.wallpaperType, () => {
+  loadWallpaper()
+})
+
 </script>
 
 

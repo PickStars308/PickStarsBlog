@@ -20,6 +20,12 @@
   </section>
 
   <Maintain v-if="isMaintaining"/>
+
+  <FloatingTools/>
+
+  <SettingsModal />
+
+  <MouseCursor :enabled="true" />
 </template>
 
 <script setup lang="ts">
@@ -43,8 +49,8 @@ const icon = `
     `;
 import {useAppStore} from '@/stores/index.ts'
 import VerticalNav from "@/components/VerticalNav.vue";
-import LoadingDialog from "@/components/LoadingDialog.vue";
 import Maintain from "@/Views/Maintain.vue";
+import FloatingTools from "@/components/FloatingTools.vue";
 
 if (!isMaintaining) {
 
