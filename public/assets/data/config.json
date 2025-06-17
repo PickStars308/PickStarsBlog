@@ -4,30 +4,48 @@
     "Description": "我们的网站正在进行备案或升级维护，暂时无法访问。请稍后再试，感谢您的理解与支持。 ",
     "ContactAdmini": "pickstars2024@qq.com"
   },
-  "PickStars": {
-    "Release": {
+  "PickStars": [
+    {
+      "id": "Release",
       "Use": true,
       "Data": {
-        "Title": "摘星辰 Release",
-        "Version": "1.0.0",
-        "Description": "摘星辰 一款Material Design 3为风格设计的多功能工具聚合工具箱"
+        "Title": "摘星辰",
+        "Version": "3.0",
+        "Description": "摘星辰是一款 Material Design 3 风格的工具箱应用，提供便捷实用的功能集合。",
+        "Log": "/assets/app/Changelog/Release",
+        "Icon": "/assets/images/logo.png",
+        "Screenshots": [
+          "/assets/app/Screenshots/1.jpg",
+          "/assets/app/Screenshots/2.jpg",
+          "/assets/app/Screenshots/3.jpg",
+          "/assets/app/Screenshots/4.jpg"
+        ]
       },
       "Download": {
         "Link": "http://backend.xinstudio.top/ResourceData/PickStars_3.0_sign.apk",
-        "Password": "zxc"
+        "Password": ""
       }
     },
-    "Beta": {
+    {
+      "id": "Beta",
       "Use": false,
       "Data": {
         "Title": "摘星辰 Beta",
         "Version": "1.0.0",
-        "Description": "摘星辰 一款Material Design 3为风格设计的多功能工具聚合工具箱"
+        "Description": "摘星辰 一款Material Design 3为风格设计的多功能工具聚合工具箱",
+        "Log": "/assets/app/Changelog/Beta",
+        "Icon": "/assets/images/logo.png",
+        "Screenshots": [
+          "/assets/app/Screenshots/1.jpg",
+          "/assets/app/Screenshots/2.jpg",
+          "/assets/app/Screenshots/3.jpg",
+          "/assets/app/Screenshots/4.jpg"
+        ]
       },
       "Download": {
         "Link": "https://github.com/pickstars2024/PickStars/releases/download/v1.0.0/PickStars-1.0.0.zip",
         "Password": ""
       }
     }
-  }
+  ]
 }

@@ -1,5 +1,5 @@
 <template>
-  <loading-dialog/>
+  <LoadingDialog/>
 
   <RandomBg/>
 
@@ -18,6 +18,8 @@
 
     <AppFooter/>
   </section>
+
+  <Maintain v-if="isMaintaining"/>
 </template>
 
 <script setup lang="ts">
@@ -41,9 +43,10 @@ const icon = `
     `;
 import {useAppStore} from '@/stores/index.ts'
 import VerticalNav from "@/components/VerticalNav.vue";
+import LoadingDialog from "@/components/LoadingDialog.vue";
+import Maintain from "@/Views/Maintain.vue";
 
 if (!isMaintaining) {
-
 
   const appInfo = {
     版本: import.meta.env.VITE_PICKSTARS_VERSION,

@@ -29,8 +29,9 @@
 
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import {ref, onMounted} from 'vue'
 import axios from 'axios'
+import {ElNotification} from 'element-plus'
 
 interface Project {
   title: string
@@ -45,7 +46,11 @@ onMounted(async () => {
     const response = await axios.get('/assets/data/projects.json')
     projects.value = response.data
   } catch (error) {
-    console.error('加载项目数据失败:', error)
+    ElNotification({
+      title: "Error",
+      message: '' + error,
+      type: "error",
+    });
   }
 })
 </script>
@@ -100,6 +105,7 @@ onMounted(async () => {
 
     .project-card {
       padding: 1rem;
+
       .title {
         font-size: 1rem;
       }

@@ -14,7 +14,7 @@
           <Typewriter/>
         </span>
 
-        <div class="social-links wow animate__animated animate__fadeInLeft" data-wow-delay="0.7s">
+        <div class="social-links wow animate__animated animate__fadeInUp" data-wow-delay="0.7s">
           <SocialLinks/>
         </div>
       </div>

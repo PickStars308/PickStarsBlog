@@ -10,6 +10,15 @@ const routes = [
         path: '/About',
         name: 'About',
         component: () => import('@/Views/About.vue') // 懒加载
+    },
+    {
+        path: '/PickStars',
+        name: 'PickStars',
+        component: () => import('@/Views/PickStars.vue')
+    },
+    {
+        path: '/Download',
+        component: () => import('@/Views/DownloadPage.vue')
     }
 ]
 

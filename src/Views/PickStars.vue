@@ -25,25 +25,21 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="Skills">
-    <SkillsHero/>
+  <section id="PickStars">
+    <PickStarsHero />
 
-    <section class="SkillsSection wow animate__animated animate__fadeInLeft">
-      <CustomizeTitle title="技能" subTitle="What I can do"/>
-      <Skills/>
+    <section class="PickStarsSection wow animate__animated animate__fadeInLeft">
+      <CustomizeTitle title="摘星辰" subTitle="PickStars"/>
 
+      <PickStarsList />
     </section>
 
-    <section class="ProjectsSection wow animate__animated animate__fadeInLeft">
-      <CustomizeTitle title="项目" subTitle="What I've built"/>
-      <SkillsProjects/>
-    </section>
 
   </section>
 </template>
 
 <style scoped lang="scss">
-.SkillsSection {
+.PickStarsSection {
   padding: 10px;
 }
 </style>

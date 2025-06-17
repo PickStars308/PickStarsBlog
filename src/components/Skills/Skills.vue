@@ -14,8 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import {ref, onMounted} from 'vue'
 import axios from 'axios'
+import {ElNotification} from 'element-plus'
 
 interface Skill {
   name: string
@@ -30,7 +31,11 @@ onMounted(async () => {
     const response = await axios.get('/assets/data/skills.json')
     skills.value = response.data
   } catch (error) {
-    console.error('技能数据加载失败:', error)
+    ElNotification({
+      title: "Error",
+      message: '' + error,
+      type: "error",
+    });
   }
 })
 </script>
@@ -38,20 +43,26 @@ onMounted(async () => {
 <style scoped lang="scss">
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); // 每行三个
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   padding: 5rem;
 }
 
 .skill-item {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  transition: transform 0.3s ease;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
 }
 
 .skill-header {

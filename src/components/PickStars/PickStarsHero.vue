@@ -11,7 +11,7 @@
           这里是 <span class="sitename wow animate__animated animate__fadeInLeft">{{ SiteAuthor }}</span> 的小窝
         </span>
         <span class="slogan wow animate__animated animate__fadeInLeft" data-wow-delay="0.5s">
-          在这里，你可以更好的了解我...
+          一款Material Design 3为风格设计的多功能工具聚合工具箱
         </span>
       </div>
 
@@ -23,7 +23,7 @@
 
     <div class="scroll-down">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
         <polyline points="6 9 12 15 18 9"></polyline>
       </svg>
     </div>
